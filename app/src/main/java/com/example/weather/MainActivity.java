@@ -11,6 +11,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         mCity=findViewById(R.id.mCity);
         mTemp=findViewById(R.id.mTemp);
         mDescription=findViewById(R.id.mDescription);
+        afficher();  // Tu avais oublié d'appeler la méthode... donc tu n'exécutais rien !!!
     }
 
     public void afficher()
@@ -56,5 +59,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        // Tu avais oublié d'utiliser le RequestQueue... donc ton objet jsonRequest n'était pas pris en compte !!!
+        RequestQueue requestQueue = Volley.newRequestQueue(this);  
+        requestQueue.add(jsonObjectRequest);
     }
 }
